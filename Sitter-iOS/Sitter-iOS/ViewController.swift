@@ -7,7 +7,9 @@
 //
 
 import UIKit
+import AVFoundation
 import QuartzCore
+
 
 class ViewController: UIViewController {
                             
@@ -29,6 +31,7 @@ class ViewController: UIViewController {
     @IBOutlet var secondNameView: UIView
     @IBOutlet var firstNameView: UIView
     @IBOutlet var thirdNameView: UIView
+    var audioPlayer = AVAudioPlayer()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -62,9 +65,17 @@ class ViewController: UIViewController {
         thirdNameView.clipsToBounds = true
         thirdNameView.layer.cornerRadius = 35
         
+        
+        var url = NSURL(fileURLWithPath: NSBundle.mainBundle().pathForResource("BOMB_SIREN", ofType: "wav"))
+        
+        var error:NSError?
+        audioPlayer=AVAudioPlayer(contentsOfURL: url, error: &error)
+        audioPlayer.prepareToPlay()
+        audioPlayer.play()
         self.setUpParallax()
     }
 
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -72,16 +83,20 @@ class ViewController: UIViewController {
     
     func setUpParallax() {
         let interpolationHorizontal:UIInterpolatingMotionEffect = UIInterpolatingMotionEffect(keyPath: "center.x", type: UIInterpolatingMotionEffectType.TiltAlongHorizontalAxis)
-        interpolationHorizontal.minimumRelativeValue = -10.0
-        interpolationHorizontal.maximumRelativeValue = 10.0
+        interpolationHorizontal.minimumRelativeValue = -50.0
+        interpolationHorizontal.maximumRelativeValue = 50.0
         
         let interpolationVertical:UIInterpolatingMotionEffect = UIInterpolatingMotionEffect(keyPath: "center.y", type: UIInterpolatingMotionEffectType.TiltAlongVerticalAxis)
-        interpolationVertical.minimumRelativeValue = -10.0
-        interpolationVertical.maximumRelativeValue = 10.0
+        interpolationVertical.minimumRelativeValue = -50.0
+        interpolationVertical.maximumRelativeValue = 50.0
         
         sitterBackgroundImageView.addMotionEffect(interpolationHorizontal)
         sitterBackgroundImageView.addMotionEffect(interpolationVertical)
     }
+    
+    
+  
+    
 
 
 }
