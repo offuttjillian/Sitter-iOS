@@ -10,7 +10,7 @@ import UIKit
 import QuartzCore
 
 class ViewController: UIViewController {
-                            
+    
     @IBOutlet var sitterBackgroundImageView: UIImageView
     
     @IBOutlet var firstBubble: UIButton
@@ -100,7 +100,6 @@ class ViewController: UIViewController {
             self.addChildButton.hidden = false
             self.settingsButton.hidden = false
             self.signOutButton.hidden = false
-            //self.view.bringSubviewToFront(self.menuButton)
         }
         else {
             self.tintedView.hidden = true

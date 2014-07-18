@@ -19,7 +19,7 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="widerbackground" translatesAutoresizingMaskIntoConstraints="NO" id="oKp-lm-70H">
                                 <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
                                 <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="-65" y="0.0" width="450" height="640"/>
+                                    <rect key="frame" x="-65" y="-31" width="450" height="640"/>
                                 </variation>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1Dw-Gp-uAf">
