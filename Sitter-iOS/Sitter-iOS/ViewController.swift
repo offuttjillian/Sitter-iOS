@@ -14,7 +14,6 @@ import QuartzCore
 class ViewController: UIViewController {
                             
     @IBOutlet var sitterBackgroundImageView: UIImageView
-    
     @IBOutlet var firstBubble: UIButton
     @IBOutlet var firstWhiteView: UIView
     @IBOutlet var firstStatusView: UIView
@@ -80,6 +79,16 @@ class ViewController: UIViewController {
         
         
         
+          }
+    
+
+
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+  @IBAction func demoButton(sender:AnyObject){
         
         var url = NSURL(fileURLWithPath: NSBundle.mainBundle().pathForResource("Baby_Crying", ofType: "wav"))
         
@@ -90,12 +99,8 @@ class ViewController: UIViewController {
         audioPlayer.play()
         createAlertView()
         self.setUpParallax()
-    }
 
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
 
     func createAlertView(){
@@ -129,7 +134,8 @@ class ViewController: UIViewController {
     }
 
     
-
+    
+    
 
     func setUpParallax() {
         let interpolationHorizontal:UIInterpolatingMotionEffect = UIInterpolatingMotionEffect(keyPath: "center.x", type: UIInterpolatingMotionEffectType.TiltAlongHorizontalAxis)
