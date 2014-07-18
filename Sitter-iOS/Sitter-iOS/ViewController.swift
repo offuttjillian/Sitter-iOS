@@ -77,18 +77,13 @@ class ViewController: UIViewController {
         thirdNameView.clipsToBounds = true
         thirdNameView.layer.cornerRadius = 35
         
-        
-        
           }
-    
-
-
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-  @IBAction func demoButton(sender:AnyObject){
+    @IBAction func demoButton(sender:AnyObject){
         
         var url = NSURL(fileURLWithPath: NSBundle.mainBundle().pathForResource("Baby_Crying", ofType: "wav"))
         
@@ -99,27 +94,23 @@ class ViewController: UIViewController {
         audioPlayer.play()
         createAlertView()
         self.setUpParallax()
-
-    
+        
     }
 
     func createAlertView(){
         
         var alert = UIAlertView()
         alert.delegate = self
-        alert.title = "YOU LEFT YOUR BABY"
-        alert.message = "YOU HAVE NEGLECTED YOUR OWN KID YOU MONSTER"
-        alert.addButtonWithTitle("It's Fine, I cracked a window")
+        alert.title = "WARNING"
+        alert.message = "Check on your child"
+        alert.addButtonWithTitle("Ok")
         alert.show()
     }
+    
     func alertView(View: UIAlertView!, clickedButtonAtIndex buttonIndex: Int){
         
         switch buttonIndex{
             
-        case 1:
-            NSLog("Retry");
-            audioPlayer.stop()
-            break;
         case 0:
             NSLog("Dismiss");
             audioPlayer.stop()
@@ -128,15 +119,9 @@ class ViewController: UIViewController {
             NSLog("Default");
             audioPlayer.stop()
             break;
-            //Some code here..
-            
         }
     }
-
     
-    
-    
-
     func setUpParallax() {
         let interpolationHorizontal:UIInterpolatingMotionEffect = UIInterpolatingMotionEffect(keyPath: "center.x", type: UIInterpolatingMotionEffectType.TiltAlongHorizontalAxis)
         interpolationHorizontal.minimumRelativeValue = -40.0
@@ -149,11 +134,6 @@ class ViewController: UIViewController {
         sitterBackgroundImageView.addMotionEffect(interpolationHorizontal)
         sitterBackgroundImageView.addMotionEffect(interpolationVertical)
     }
-    
-
-    
-
-    
 
     @IBAction func menuButtonTapped(sender: AnyObject) {
         if(self.tintedView.hidden == true) {
@@ -172,7 +152,6 @@ class ViewController: UIViewController {
             self.settingsButton.hidden = true
             self.signOutButton.hidden = true
         }
-            }
-
+    }
 }
 
