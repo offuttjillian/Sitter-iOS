@@ -54,6 +54,8 @@ class ViewController: UIViewController {
         firstWhiteView.layer.cornerRadius = 54
         firstStatusView.clipsToBounds = true
         firstStatusView.layer.cornerRadius = 57
+        firstStatusView.backgroundColor=UIColor(red:128/255, green: 203/255, blue: 155/255, alpha: 1)
+        
         
         secondWhiteView.clipsToBounds = true
         secondWhiteView.layer.cornerRadius = 69
@@ -61,11 +63,15 @@ class ViewController: UIViewController {
         secondStatusView.layer.cornerRadius = 72
         secondNameView.clipsToBounds = true
         secondNameView.layer.cornerRadius = 35
+        secondStatusView.backgroundColor=UIColor(red:128/255, green: 203/255, blue: 155/255, alpha: 1)
+
         
         thirdWhiteView.clipsToBounds = true
         thirdWhiteView.layer.cornerRadius = 87
         thirdStatusView.clipsToBounds = true
         thirdStatusView.layer.cornerRadius = 91
+        thirdStatusView.backgroundColor=UIColor(red:128/255, green: 203/255, blue: 155/255, alpha: 1)
+
         
         firstNameView.clipsToBounds = true
         firstNameView.layer.cornerRadius = 35
@@ -73,12 +79,16 @@ class ViewController: UIViewController {
         thirdNameView.layer.cornerRadius = 35
         
         
-        var url = NSURL(fileURLWithPath: NSBundle.mainBundle().pathForResource("BOMB_SIREN", ofType: "wav"))
+        
+        
+        var url = NSURL(fileURLWithPath: NSBundle.mainBundle().pathForResource("Baby_Crying", ofType: "wav"))
         
         var error:NSError?
         audioPlayer=AVAudioPlayer(contentsOfURL: url, error: &error)
         audioPlayer.prepareToPlay()
+        audioPlayer.numberOfLoops = -1
         audioPlayer.play()
+        createAlertView()
         self.setUpParallax()
     }
 
@@ -87,22 +97,56 @@ class ViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+
+    func createAlertView(){
+        
+        var alert = UIAlertView()
+        alert.delegate = self
+        alert.title = "YOU LEFT YOUR BABY"
+        alert.message = "YOU HAVE NEGLECTED YOUR OWN KID YOU MONSTER"
+        alert.addButtonWithTitle("It's Fine, I cracked a window")
+        alert.show()
+    }
+    func alertView(View: UIAlertView!, clickedButtonAtIndex buttonIndex: Int){
+        
+        switch buttonIndex{
+            
+        case 1:
+            NSLog("Retry");
+            audioPlayer.stop()
+            break;
+        case 0:
+            NSLog("Dismiss");
+            audioPlayer.stop()
+            break;
+        default:
+            NSLog("Default");
+            audioPlayer.stop()
+            break;
+            //Some code here..
+            
+        }
+    }
+
     
+
+
     func setUpParallax() {
         let interpolationHorizontal:UIInterpolatingMotionEffect = UIInterpolatingMotionEffect(keyPath: "center.x", type: UIInterpolatingMotionEffectType.TiltAlongHorizontalAxis)
-        interpolationHorizontal.minimumRelativeValue = -50.0
-        interpolationHorizontal.maximumRelativeValue = 50.0
+        interpolationHorizontal.minimumRelativeValue = -40.0
+        interpolationHorizontal.maximumRelativeValue = 40.0
         
         let interpolationVertical:UIInterpolatingMotionEffect = UIInterpolatingMotionEffect(keyPath: "center.y", type: UIInterpolatingMotionEffectType.TiltAlongVerticalAxis)
-        interpolationVertical.minimumRelativeValue = -50.0
-        interpolationVertical.maximumRelativeValue = 50.0
+        interpolationVertical.minimumRelativeValue = -40.0
+        interpolationVertical.maximumRelativeValue = 40.0
         
         sitterBackgroundImageView.addMotionEffect(interpolationHorizontal)
         sitterBackgroundImageView.addMotionEffect(interpolationVertical)
     }
     
+
     
-  
+
     
 
     @IBAction func menuButtonTapped(sender: AnyObject) {

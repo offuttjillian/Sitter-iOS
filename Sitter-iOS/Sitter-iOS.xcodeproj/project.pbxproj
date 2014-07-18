@@ -13,6 +13,7 @@
 		0F6826931978948E00F21FFF /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0F6826921978948E00F21FFF /* Images.xcassets */; };
 		0F68269F1978948E00F21FFF /* Sitter_iOSTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F68269E1978948E00F21FFF /* Sitter_iOSTests.swift */; };
 		0F6826AB1978BD1A00F21FFF /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F6826AA1978BD1A00F21FFF /* QuartzCore.framework */; };
+		C06877E7197986A50050B8A8 /* Baby_Crying.wav in Resources */ = {isa = PBXBuildFile; fileRef = C06877E6197986A50050B8A8 /* Baby_Crying.wav */; };
 		C0D8BF6119796BEA00AA23C0 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C0D8BF6019796BEA00AA23C0 /* AVFoundation.framework */; };
 		C0D8BF6319797AA400AA23C0 /* BOMB_SIREN.wav in Resources */ = {isa = PBXBuildFile; fileRef = C0D8BF6219797AA400AA23C0 /* BOMB_SIREN.wav */; };
 /* End PBXBuildFile section */
@@ -38,6 +39,7 @@
 		0F68269D1978948E00F21FFF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0F68269E1978948E00F21FFF /* Sitter_iOSTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sitter_iOSTests.swift; sourceTree = "<group>"; };
 		0F6826AA1978BD1A00F21FFF /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		C06877E6197986A50050B8A8 /* Baby_Crying.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = Baby_Crying.wav; sourceTree = "<group>"; };
 		C0D8BF6019796BEA00AA23C0 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		C0D8BF6219797AA400AA23C0 /* BOMB_SIREN.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = BOMB_SIREN.wav; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -87,6 +89,7 @@
 			children = (
 				0F68268B1978948E00F21FFF /* AppDelegate.swift */,
 				0F68268D1978948E00F21FFF /* ViewController.swift */,
+				C06877E6197986A50050B8A8 /* Baby_Crying.wav */,
 				C0D8BF6219797AA400AA23C0 /* BOMB_SIREN.wav */,
 				0F68268F1978948E00F21FFF /* Main.storyboard */,
 				0F6826921978948E00F21FFF /* Images.xcassets */,
@@ -200,6 +203,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C06877E7197986A50050B8A8 /* Baby_Crying.wav in Resources */,
 				C0D8BF6319797AA400AA23C0 /* BOMB_SIREN.wav in Resources */,
 				0F6826911978948E00F21FFF /* Main.storyboard in Resources */,
 				0F6826931978948E00F21FFF /* Images.xcassets in Resources */,
