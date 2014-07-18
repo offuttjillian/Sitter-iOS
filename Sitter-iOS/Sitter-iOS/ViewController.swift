@@ -33,6 +33,13 @@ class ViewController: UIViewController {
     @IBOutlet var thirdNameView: UIView
     var audioPlayer = AVAudioPlayer()
     
+    @IBOutlet var menuButton: UIButton
+    @IBOutlet var tintedView: UIView
+    
+    @IBOutlet var signOutButton: UIButton
+    @IBOutlet var settingsButton: UIButton
+    @IBOutlet var addChildButton: UIButton
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -98,6 +105,25 @@ class ViewController: UIViewController {
   
     
 
+    @IBAction func menuButtonTapped(sender: AnyObject) {
+        if(self.tintedView.hidden == true) {
+            self.tintedView.hidden = false
+            self.view.bringSubviewToFront(self.addChildButton)
+            self.view.bringSubviewToFront(self.settingsButton)
+            self.view.bringSubviewToFront(self.signOutButton)
+            self.view.bringSubviewToFront(self.menuButton)
+            self.addChildButton.hidden = false
+            self.settingsButton.hidden = false
+            self.signOutButton.hidden = false
+            //self.view.bringSubviewToFront(self.menuButton)
+        }
+        else {
+            self.tintedView.hidden = true
+            self.addChildButton.hidden = true
+            self.settingsButton.hidden = true
+            self.signOutButton.hidden = true
+        }
+            }
 
 }
 
