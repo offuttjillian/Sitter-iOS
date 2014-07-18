@@ -7,12 +7,13 @@
 //
 
 import UIKit
+import AVFoundation
 import QuartzCore
+
 
 class ViewController: UIViewController {
     
     @IBOutlet var sitterBackgroundImageView: UIImageView
-    
     @IBOutlet var firstBubble: UIButton
     @IBOutlet var firstWhiteView: UIView
     @IBOutlet var firstStatusView: UIView
@@ -29,6 +30,7 @@ class ViewController: UIViewController {
     @IBOutlet var secondNameView: UIView
     @IBOutlet var firstNameView: UIView
     @IBOutlet var thirdNameView: UIView
+    var audioPlayer = AVAudioPlayer()
     
     @IBOutlet var menuButton: UIButton
     @IBOutlet var tintedView: UIView
@@ -51,6 +53,8 @@ class ViewController: UIViewController {
         firstWhiteView.layer.cornerRadius = 54
         firstStatusView.clipsToBounds = true
         firstStatusView.layer.cornerRadius = 57
+        firstStatusView.backgroundColor=UIColor(red:128/255, green: 203/255, blue: 155/255, alpha: 1)
+        
         
         secondWhiteView.clipsToBounds = true
         secondWhiteView.layer.cornerRadius = 69
@@ -58,37 +62,98 @@ class ViewController: UIViewController {
         secondStatusView.layer.cornerRadius = 72
         secondNameView.clipsToBounds = true
         secondNameView.layer.cornerRadius = 35
+        secondStatusView.backgroundColor=UIColor(red:128/255, green: 203/255, blue: 155/255, alpha: 1)
+
         
         thirdWhiteView.clipsToBounds = true
         thirdWhiteView.layer.cornerRadius = 87
         thirdStatusView.clipsToBounds = true
         thirdStatusView.layer.cornerRadius = 91
+        thirdStatusView.backgroundColor=UIColor(red:128/255, green: 203/255, blue: 155/255, alpha: 1)
+
         
         firstNameView.clipsToBounds = true
         firstNameView.layer.cornerRadius = 35
         thirdNameView.clipsToBounds = true
         thirdNameView.layer.cornerRadius = 35
         
-        self.setUpParallax()
-    }
+        
+        
+          }
+    
 
+
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+  @IBAction func demoButton(sender:AnyObject){
+        
+        var url = NSURL(fileURLWithPath: NSBundle.mainBundle().pathForResource("Baby_Crying", ofType: "wav"))
+        
+        var error:NSError?
+        audioPlayer=AVAudioPlayer(contentsOfURL: url, error: &error)
+        audioPlayer.prepareToPlay()
+        audioPlayer.numberOfLoops = -1
+        audioPlayer.play()
+        createAlertView()
+        self.setUpParallax()
+
     
+    }
+
+    func createAlertView(){
+        
+        var alert = UIAlertView()
+        alert.delegate = self
+        alert.title = "YOU LEFT YOUR BABY"
+        alert.message = "YOU HAVE NEGLECTED YOUR OWN KID YOU MONSTER"
+        alert.addButtonWithTitle("It's Fine, I cracked a window")
+        alert.show()
+    }
+    func alertView(View: UIAlertView!, clickedButtonAtIndex buttonIndex: Int){
+        
+        switch buttonIndex{
+            
+        case 1:
+            NSLog("Retry");
+            audioPlayer.stop()
+            break;
+        case 0:
+            NSLog("Dismiss");
+            audioPlayer.stop()
+            break;
+        default:
+            NSLog("Default");
+            audioPlayer.stop()
+            break;
+            //Some code here..
+            
+        }
+    }
+
+    
+    
+    
+
     func setUpParallax() {
         let interpolationHorizontal:UIInterpolatingMotionEffect = UIInterpolatingMotionEffect(keyPath: "center.x", type: UIInterpolatingMotionEffectType.TiltAlongHorizontalAxis)
-        interpolationHorizontal.minimumRelativeValue = -10.0
-        interpolationHorizontal.maximumRelativeValue = 10.0
+        interpolationHorizontal.minimumRelativeValue = -40.0
+        interpolationHorizontal.maximumRelativeValue = 40.0
         
         let interpolationVertical:UIInterpolatingMotionEffect = UIInterpolatingMotionEffect(keyPath: "center.y", type: UIInterpolatingMotionEffectType.TiltAlongVerticalAxis)
-        interpolationVertical.minimumRelativeValue = -10.0
-        interpolationVertical.maximumRelativeValue = 10.0
+        interpolationVertical.minimumRelativeValue = -40.0
+        interpolationVertical.maximumRelativeValue = 40.0
         
         sitterBackgroundImageView.addMotionEffect(interpolationHorizontal)
         sitterBackgroundImageView.addMotionEffect(interpolationVertical)
     }
+    
+
+    
+
+    
 
     @IBAction func menuButtonTapped(sender: AnyObject) {
         if(self.tintedView.hidden == true) {
